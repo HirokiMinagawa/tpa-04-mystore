@@ -21,6 +21,9 @@ const setup = function(app) {
       })
       .then(([results]) => {
         res.json(results);
+      })
+      .catch((err) => {
+        console.log(err.message);
       });
   });
 };
