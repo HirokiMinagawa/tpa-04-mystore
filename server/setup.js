@@ -10,6 +10,22 @@ const setup = function(app) {
         res.json(rows);
       });
   });
+
+  app.post('/api/items', function(req, res) {
+    const { name, price, image_url } = req.body;
+    db.getConnection()
+      .then(dbConnection => {
+        return dbConnection.query(
+          'INSERT INTO items (name, price, image_url) VALUES (?, ?, ?)',
+          [name, price, image_url]);
+      })
+      .then(([results]) => {
+        res.json(results);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  });
 };
 
 module.exports = setup;
