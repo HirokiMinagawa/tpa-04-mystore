@@ -23,7 +23,7 @@ const setup = function(app) {
         res.json(results);
       })
       .catch((err) => {
-        console.log(err.message);
+        res.status(400).send({ error: err.message });
       });
   });
 };
