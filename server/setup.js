@@ -12,12 +12,12 @@ const setup = function(app) {
   });
 
   app.post('/api/items', function(req, res) {
-    const { name, price, image_url } = req.body;
+    const { name, price, imageUrl } = req.body;
     db.getConnection()
       .then(dbConnection => {
         return dbConnection.query(
-          'INSERT INTO items (name, price, image_url) VALUES (?, ?, ?)',
-          [name, price, image_url]);
+          'INSERT INTO items (name, price, imageUrl) VALUES (?, ?, ?)',
+          [name, price, imageUrl]);
       })
       .then(([results]) => {
         res.json(results);
